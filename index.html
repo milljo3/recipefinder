@@ -2,15 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Recipe Finder</title>
 </head>
 <body>
 
-<header></header>
+<header>
+    <h1>Recipe Finder</h1>
+</header>
 
 <main>
-    <h1>Recipe Finder</h1>
+    <div id="recipe-container">
+        <div id="recipe-form">
+            <label for="recipe-input"></label>
+            <input type="text" id="recipe-input" placeholder="Search for a recipe">
+            <button id="recipe-button">Search</button>
+            <div id="recipe-results"></div>
+        </div>
+        <div id="recipe-grid">
+            <div class="recipe-grid-item">
+                <img src="" alt="Recipe Image">
+                <div class="recipe-grid-item-content">
+                    <h2>Spicy Arrabiata Penne</h2>
+                    <button>View More</button>
+                </div>
+            </div>
+            <div class="recipe-grid-item">
+                <img src="" alt="Recipe Image">
+                <div class="recipe-grid-item-content">
+                    <h2>Spicy Arrabiata Penne</h2>
+                    <button>View More</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 
 <footer></footer>
