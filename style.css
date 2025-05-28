@@ -9,6 +9,9 @@ body {
     color: #222;
     font-family: 'Roboto', sans-serif;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -20,7 +23,8 @@ header {
 
 main {
     max-width: 600px;
-    height: 90vh;
+    flex: 1;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +37,7 @@ main {
     display: flex;
     flex-direction: column;
     overflow: auto;
-    gap: 20px;
+    gap: 10px;
     background-color: #fff;
     border-radius: 15px;
     padding: 20px;
@@ -48,11 +52,11 @@ main {
     background-color: #fff;
     width: 100%;
     max-width: 500px;
-    gap: 20px;
+    gap: 10px;
     align-items: center;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    padding: 20px;
+    padding: 20px 20px 10px;
     align-self: center;
 }
 
@@ -81,21 +85,18 @@ main {
 }
 
 /*
-Used when only one recipe is returned
+When only one recipe is returned
  */
 #recipe-one {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
     background-color: #fff;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-    padding: 20px;
-    align-items: center;
+    align-self: center;
 }
 
 /*
-Used when multiple recipes are returned
+When multiple recipes are returned
  */
 #recipe-grid {
     display: grid;
@@ -149,11 +150,22 @@ Used when multiple recipes are returned
     color: #222;
 }
 
+#invalid {
+    display: none;
+    font-size: 13px;
+    align-self: center;
+    font-weight: bold;
+}
+
 /*
 Recipe Modal
  */
+body.modal-open {
+    overflow: hidden;
+}
+
 #modal-overlay {
-    display: flex;
+    display: none;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -193,6 +205,8 @@ Recipe Modal
 #modal-header img {
     width: 100%;
     height: 100%;
+    max-width: 125px;
+    max-height: 125px;
     align-self: center;
     object-fit: cover;
     border-radius: 8px;
@@ -217,25 +231,29 @@ Recipe Modal
     transform: scale(1.1);
 }
 
-.modal-header-content h1 {
+#modal-header-content h1 {
     font-size: 16px;
 }
 
-.modal-header-content a {
+#modal-header-content a {
     font-size: 14px;
     cursor: pointer;
     text-decoration-color: #c2bebe;
 }
 
-.modal-header-content a:hover,
-.modal-header-content a p:hover {
+#modal-header-content a:hover,
+#modal-header-content a p:hover {
     text-decoration-color: #857f7f;
     color: #857f7f;
     transition: 0.3s;
 }
 
-.modal-header-content a p {
+#modal-header-content a p {
     color: #c2bebe;
+}
+
+#modal-body p {
+    line-height: 1.75;
 }
 
 #ingredients-list {
@@ -253,7 +271,6 @@ Last one should be 100%
     gap: 10px;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #ccc;
 }
 
 /*
@@ -269,15 +286,20 @@ Media Queries
         height: 500px;
     }
 
-    .modal-header-content {
+    #modal-header img {
+        max-width: 250px;
+        max-height: 250px;
+    }
+
+    #modal-header-content {
         align-self: center;
     }
 
-    .modal-header-content h1 {
+    #modal-header-content h1 {
         font-size: 20px;
     }
 
-    .modal-header-content a {
+    #modal-header-content a {
         font-size: 16px;
         color: #222;
         cursor: pointer;
