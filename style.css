@@ -1,16 +1,21 @@
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
+
+html, body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 
 body {
     background-color: #c2bebe;
     color: #222;
     font-family: 'Roboto', sans-serif;
     overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
     min-height: 100vh;
 }
 
@@ -19,18 +24,59 @@ header {
     padding: 20px;
     background-color: #222;
     color: #c2bebe;
+    flex-shrink: 0
 }
 
 main {
-    max-width: 600px;
     flex: 1;
-    height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    padding-top: 60px;
-    padding-bottom: 40px;
+    align-items: flex-start;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+#forum-selection {
+    display: flex;
+    justify-content: space-around;
+}
+
+.forum-selection-unselected button,
+.forum-selection-selected button {
+    position: relative;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.forum-selection-selected button {
+    font-weight: bold;
+}
+
+.forum-selection-unselected button:hover,
+.forum-selection-selected button:hover {
+    background-color: #939393;
+}
+
+.forum-selection-unselected button::before,
+.forum-selection-selected button::before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    right: -10px;
+    bottom: 0;
+    height: 2px;
+}
+
+.forum-selection-unselected button::before {
+    background-color: #c2bebe;
+}
+
+.forum-selection-selected button::before {
+    background-color: #000;
 }
 
 #recipe-container {
@@ -44,6 +90,12 @@ main {
     width: auto;
     max-width: 600px;
     max-height: 90vh;
+    align-self: center;
+}
+
+#search-forum {
+    display: flex;
+    flex-direction: column;
 }
 
 #recipe-form {
@@ -87,7 +139,7 @@ main {
 /*
 When only one recipe is returned
  */
-#recipe-one {
+.recipe-one {
     display: flex;
     background-color: #fff;
     border-bottom-left-radius: 15px;
@@ -98,7 +150,7 @@ When only one recipe is returned
 /*
 When multiple recipes are returned
  */
-#recipe-grid {
+.recipe-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
@@ -111,12 +163,14 @@ When multiple recipes are returned
 
 .recipe-grid-item {
     background-color: #222;
+    position: relative;
     color: #c2bebe;
     border-radius: 15px;
     padding: 10px;
     display: flex;
     gap: 20px;
     max-width: 300px;
+    max-height: 100px;
 }
 
 .recipe-grid-item img {
@@ -130,24 +184,64 @@ When multiple recipes are returned
     display: flex;
     flex-direction: column;
     gap: 10px;
-    font-size: 12px;
+    height: 100%;
     text-align: center;
 }
 
-.recipe-grid-item-content button {
+.recipe-grid-item-content h2 {
+    font-size: 16px;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-wrap: break-word;
+    min-height: 0;
+    line-height: 1.2;
+    text-size-adjust: auto;
+    -webkit-text-size-adjust: auto;
+    align-content: center;
+}
+
+.view-more {
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #222;
     background-color: #222;
     color: #c2bebe;
     cursor: pointer;
-    width: 70%;
+    width: 80%;
     align-self: center;
 }
 
-.recipe-grid-item-content button:hover {
+.view-more:hover {
     background-color: #c2bebe;
     color: #222;
+}
+
+#favorites-forum {
+    display: none;
+    min-height: 100px;
+}
+
+.favorited,
+.unfavorited {
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    padding: 10px;
+    top: -15px;
+    right: -5px;
+}
+
+.favorited {
+    color: gold;
+}
+
+.unfavorited {
+    color: gray;
 }
 
 #invalid {
@@ -155,6 +249,16 @@ When multiple recipes are returned
     font-size: 13px;
     align-self: center;
     font-weight: bold;
+}
+
+#recipe-list-favorites {
+    display: flex;'
+    flex-direction: column;
+}
+
+#no-favorites {
+    text-align: center;
+    align-self: center;
 }
 
 /*
@@ -262,10 +366,6 @@ body.modal-open {
     flex-direction: column;
 }
 
-/*
-Increase border-bottom transparency as more rows are added (Percentage of total rows)
-Last one should be 100%
- */
 .ingredient-row {
     display: flex;
     gap: 10px;
@@ -277,7 +377,7 @@ Last one should be 100%
 Media Queries
  */
 @media (min-width: 768px) {
-    #recipe-grid {
+    .recipe-grid {
         grid-template-columns: repeat(2, 1fr)
     }
 
@@ -304,9 +404,5 @@ Media Queries
         color: #222;
         cursor: pointer;
     }
-
-}
-
-@media (min-width: 1024px) {
 
 }

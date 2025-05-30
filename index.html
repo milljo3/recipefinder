@@ -14,26 +14,56 @@
 
 <main>
     <div id="recipe-container">
-        <div id="recipe-form">
-            <label for="recipe-input"></label>
-            <input type="text" id="recipe-input" placeholder="Search for a recipe">
-            <button id="recipe-button">Search</button>
-            <div id="recipe-results"></div>
+        <div id="forum-selection">
+            <div id="forum-search-selection" class="forum-selection-selected">
+                <button>Search</button>
+            </div>
+            <div id="forum-favorites-selection" class="forum-selection-unselected">
+                <button>Favorites</button>
+            </div>
         </div>
-        <div id="recipe-list">
-<!--            <div id="recipe-grid">-->
-<!--                            <div class="recipe-grid-item">-->
-<!--                                <img src="" alt="Recipe Image">-->
-<!--                                <div class="recipe-grid-item-content">-->
-<!--                                    <h2>Spicy Arrabiata Penne</h2>-->
-<!--                                    <button>View More</button>-->
-<!--                                </div>-->
-<!--                            </div>-->
+        <div id="search-forum">
+            <div id="recipe-form">
+                <label for="recipe-input"></label>
+                <input type="text" id="recipe-input" placeholder="Search for a recipe">
+                <button id="recipe-button">Search</button>
+                <div id="recipe-results"></div>
+            </div>
+            <div id="recipe-list">
+<!--                            <div id="recipe-grid">-->
+<!--                                            <div class="recipe-grid-item">-->
+<!--                                                <img src="" alt="Recipe Image">-->
+<!--                                                <div class="recipe-grid-item-content">-->
+<!--                                                    <h2>Spicy Arrabiata Penne</h2>-->
+<!--                                                    <button class="view-more">View More</button>-->
+<!--                                                    <button class="favorited">-->
+<!--                                                        &#9733-->
+<!--                                                    </button>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
 
-<!--            </div>-->
+<!--                            </div>-->
+            </div>
+            <div id="invalid">
+                Invalid recipe, try 'chicken' or 'pizza'
+            </div>
         </div>
-        <div id="invalid">
-            Invalid recipe, try 'chicken' or 'pizza'
+        <div id="favorites-forum">
+            <div id="recipe-list-favorites">
+<!--                            <div id="recipe-grid">-->
+<!--                                            <div class="recipe-grid-item">-->
+<!--                                                <img src="" alt="Recipe Image">-->
+<!--                                                <div class="recipe-grid-item-content">-->
+<!--                                                    <h2>Spicy Arrabiata Penne</h2>-->
+<!--                                                    <button>View More</button>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+
+<!--                            </div>-->
+            </div>
+            <div id="no-favorites">
+                You have not favorited any recipes.
+            </div>
         </div>
     </div>
 
